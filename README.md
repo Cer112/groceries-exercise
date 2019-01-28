@@ -29,21 +29,16 @@ products = [
 
 products_count=len(products)
 
-print(type(products))
+#print(type(products))
 
-print("--------------")
-print("THERE ARE " + str(products_count) + " PRODUCTS")
-print("--------------")
+#print("--------------")
+#print("THERE ARE " + str(products_count) + " PRODUCTS")
+#print("--------------")
 
 def sort_by_name(any_product):
     return any_product["name"]
 
-#sorted_products = sorted(products, key=sort_by_name)
-
-
-
-
-
+sorted_products = sorted(products, key=sort_by_name)
 
 
 #for p in sorted_products:
@@ -85,21 +80,23 @@ def sort_by_name(any_product):
 #Departments (part 2)
 #
 
-departments = []
 
-for p in products:
+
+#for p in products:
     #print(p["department"])
-    departments.append(p["department"])
+    #departments.append(p["department"])
     #if p["department"] not in departments:
      #   departments.append(p["department"])
 
+
+departments = []
+for p in products:
+    #print(p["department"])
+    #departments.append(p["department"])
+    if p["department"] not in departments:
+        departments.append(p["department"])
+
 unique_departments= list(set(departments))
-
-
-
-
-
-
 
 department_count=len(unique_departments)
    
@@ -110,7 +107,11 @@ print("--------------")
 unique_departments.sort()
 
 for d in departments:
-    print(d.title())
+    matching_products = [p for p in products if p["department"] == d]
+    matching_products_count = len(matching_products)
+    print(d.title() + "(" + str(matching_products_count) + " products)")
+
+
 
 
 
